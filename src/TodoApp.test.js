@@ -36,5 +36,6 @@ describe("TodoApp Component", function () {
     fireEvent.click(container.querySelector("#submit-btn"));
 
     expect(queryByText("test Todo")).toBeInTheDocument();
+
   });
 });

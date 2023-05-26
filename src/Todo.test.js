@@ -16,5 +16,7 @@ describe("Todo Component", function () {
   test("displays correct information", function () {
     const { container, queryByText } = render(<Todo todo={initialTodos[0]} />);
     expect(queryByText(initialTodos[0].title)).toBeInTheDocument();
+    expect(queryByText(initialTodos[0].description)).toBeInTheDocument();
+    expect(queryByText(`(priority: ${initialTodos[0].priority})`)).toBeInTheDocument();
   });
 })

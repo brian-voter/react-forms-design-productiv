@@ -27,8 +27,10 @@ describe("EditableTodo Component functions", function () {
   });
 
   test("Check that update arguments are the form values", function () {
+    let newTitle = "";
+
     const update = (todo) => {
-      expect(todo.title).toEqual(editTodo.title);
+      newTitle = todo.title;
     };
 
     const { container, queryByText } = render(
@@ -50,6 +52,8 @@ describe("EditableTodo Component functions", function () {
     fireEvent.change(priorityInput, { target: { value: editTodo.priority } });
 
     fireEvent.click(container.querySelector("#submit-btn"));
+
+    expect(newTitle).toEqual(editTodo.title);
 
   });
 
@@ -74,8 +78,10 @@ describe("EditableTodo Component functions", function () {
   });
 
   test("Delete todo", function () {
+    let removedTodoId = null;
+
     const remove = (todoId) => {
-      expect(todoId).toEqual(initialTodos[0].id);
+      removedTodoId = todoId;
     };
 
     const { container, queryByText } = render(
@@ -85,6 +91,8 @@ describe("EditableTodo Component functions", function () {
     expect(queryByText(initialTodos[0].title)).toBeInTheDocument();
 
     fireEvent.click(container.querySelector("#delete-btn"));
+
+    expect(removedTodoId).toEqual(initialTodos[0].id);
   });
 
 });
