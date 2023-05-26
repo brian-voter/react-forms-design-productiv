@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-
+const DEFAULT_FORM = { title: "", description: "", priority: 1 };
 /** Form for adding.
  *
  * Props:
@@ -10,16 +10,15 @@ import React, { useState } from "react";
  * { TodoApp, EditableTodo } -> TodoForm
  */
 
-function TodoForm({ initialFormData, handleSave }) {
+function TodoForm({ initialFormData = DEFAULT_FORM, handleSave }) {
   const [formData, setFormData] = useState(initialFormData);
-
 
   /** Update form input. */
   function handleChange(evt) {
-    const formField = evt.target.name;
+    const { name, value } = evt.target;
 
     setFormData(oldData => (
-      { ...oldData, [formField]: evt.target.value }
+      { ...oldData, [name]: value }
     ));
   }
 
@@ -73,7 +72,7 @@ function TodoForm({ initialFormData, handleSave }) {
             <option value={3}>Meh</option>
           </select>
         </div>
-        <button className="btn-primary rig btn btn-sm NewTodoForm-addBtn">
+        <button id="submit-btn" className="btn-primary rig btn btn-sm NewTodoForm-addBtn">
           Gø!
         </button>
       </div>

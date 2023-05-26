@@ -16,38 +16,46 @@ import TodoForm from "./TodoForm";
  */
 
 function EditableTodo({ todo, update, remove }) {
-
   const [isEditing, setIsEditing] = useState(false);
 
   /** Toggle if this is being edited */
-  function toggleEdit() { }
+  function toggleEdit() {
+    setIsEditing(isEditing => !isEditing);
+  }
 
   /** Call remove fn passed to this. */
-  function handleDelete() { }
+  function handleDelete() {
+    remove(todo.id);
+  }
 
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function handleSave(formData) { }
+  function handleSave(formData) {
+    update({ ...formData, id: todo.id });
+    toggleEdit();
+  }
 
   return (
     <div className="EditableTodo">
 
-      {isEditing && <TodoForm />}
+      {isEditing && <TodoForm initialFormData={todo} handleSave={handleSave} />}
 
       {!isEditing &&
         <div className="mb-3">
           <div className="float-end text-sm-end">
             <button
+              id="edit-btn"
               className="EditableTodo-toggle btn-link btn btn-sm"
               onClick={toggleEdit}>
               Edit
             </button>
             <button
+              id="delete-btn"
               className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
               onClick={handleDelete}>
               Del
             </button>
           </div>
-          <Todo todo={todo}/>
+          <Todo todo={todo} />
         </div>
       }
 

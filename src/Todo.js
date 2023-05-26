@@ -8,10 +8,8 @@ import React from "react";
  * { EditableTodo, TopTodo } -> Todo
  **/
 
-//TODO: do we need the id?
 function Todo({ todo }) {
-  console.log("TODO: ", todo);
-  const {id, title, description, priority} = todo;
+  const { title, description, priority} = todo;
 
   return (
       <div className="Todo">

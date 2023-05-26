@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoApp Component snapshot test 1`] = `
+<div>
+  <main
+    class="TodoApp"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-md-6"
+      >
+        <div>
+          <div
+            class="EditableTodo"
+          >
+            <div
+              class="mb-3"
+            >
+              <div
+                class="float-end text-sm-end"
+              >
+                <button
+                  class="EditableTodo-toggle btn-link btn btn-sm"
+                  id="edit-btn"
+                >
+                  Edit
+                </button>
+                <button
+                  class="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+                  id="delete-btn"
+                >
+                  Del
+                </button>
+              </div>
+              <div
+                class="Todo"
+              >
+                <div>
+                  <b>
+                    Code!
+                  </b>
+                   
+                  <small>
+                    (priority: 
+                    2
+                    )
+                  </small>
+                </div>
+                <div>
+                  <small>
+                    Write some code
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="EditableTodo"
+          >
+            <div
+              class="mb-3"
+            >
+              <div
+                class="float-end text-sm-end"
+              >
+                <button
+                  class="EditableTodo-toggle btn-link btn btn-sm"
+                  id="edit-btn"
+                >
+                  Edit
+                </button>
+                <button
+                  class="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+                  id="delete-btn"
+                >
+                  Del
+                </button>
+              </div>
+              <div
+                class="Todo"
+              >
+                <div>
+                  <b>
+                    Make dinner
+                  </b>
+                   
+                  <small>
+                    (priority: 
+                    1
+                    )
+                  </small>
+                </div>
+                <div>
+                  <small>
+                    Cook something healthy
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="EditableTodo"
+          >
+            <div
+              class="mb-3"
+            >
+              <div
+                class="float-end text-sm-end"
+              >
+                <button
+                  class="EditableTodo-toggle btn-link btn btn-sm"
+                  id="edit-btn"
+                >
+                  Edit
+                </button>
+                <button
+                  class="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+                  id="delete-btn"
+                >
+                  Del
+                </button>
+              </div>
+              <div
+                class="Todo"
+              >
+                <div>
+                  <b>
+                    Go to bed
+                  </b>
+                   
+                  <small>
+                    (priority: 
+                    3
+                    )
+                  </small>
+                </div>
+                <div>
+                  <small>
+                    In bed by 11:15
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6"
+      >
+        <section
+          class="mb-4"
+        >
+          <h3>
+            Top Todo
+          </h3>
+          <div
+            class="Todo"
+          >
+            <div>
+              <b>
+                Make dinner
+              </b>
+               
+              <small>
+                (priority: 
+                1
+                )
+              </small>
+            </div>
+            <div>
+              <small>
+                Cook something healthy
+              </small>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3
+            class="mb-3"
+          >
+            Add Nü
+          </h3>
+          <form
+            class="NewTodoForm"
+          >
+            <div
+              class="mb-3"
+            >
+              <input
+                aria-label="Title"
+                class="form-control"
+                id="newTodo-title"
+                name="title"
+                placeholder="Title"
+                value=""
+              />
+            </div>
+            <div
+              class="mb-3"
+            >
+              <textarea
+                aria-label="Description"
+                class="form-control"
+                id="newTodo-description"
+                name="description"
+                placeholder="Description"
+              />
+            </div>
+            <div
+              class="mb-3 d-flex justify-content-between"
+            >
+              <div
+                class="w-75 d-flex justify-content-between"
+              >
+                <label
+                  class="d-inline-flex"
+                  for="newTodo-priority"
+                >
+                  Priority:  
+                </label>
+                <select
+                  class="form-control form-control-sm d-inline-flex"
+                  id="newTodo-priority"
+                  name="priority"
+                >
+                  <option
+                    value="1"
+                  >
+                    Ultra-Über
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    Über
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    Meh
+                  </option>
+                </select>
+              </div>
+              <button
+                class="btn-primary rig btn btn-sm NewTodoForm-addBtn"
+                id="submit-btn"
+              >
+                Gø!
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+`;
