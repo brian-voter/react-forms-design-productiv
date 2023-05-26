@@ -20,9 +20,10 @@ describe("EditableTodo Component functions", function () {
   let editTodo;
   beforeEach(function () {
     editTodo = {
+      id: 1,
       title: "new title",
       description: "new description",
-      priority: 1
+      priority: "1"
     };
   });
 
@@ -51,7 +52,7 @@ describe("EditableTodo Component functions", function () {
 
     console.log(updateMock.mock);
     //FIXME: match args correctly
-    expect(updateMock.mock.lastCall[0]).toEqual(editTodo.title);
+    expect(updateMock.mock.lastCall[0]).toEqual(editTodo);
 
   });
 

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoForm Component smoke and snapshot snapshot test 1`] = `
+<div>
+  <form
+    class="NewTodoForm"
+  >
+    <div
+      class="mb-3"
+    >
+      <input
+        aria-label="Title"
+        class="form-control"
+        id="newTodo-title"
+        name="title"
+        placeholder="Title"
+        value=""
+      />
+    </div>
+    <div
+      class="mb-3"
+    >
+      <textarea
+        aria-label="Description"
+        class="form-control"
+        id="newTodo-description"
+        name="description"
+        placeholder="Description"
+      />
+    </div>
+    <div
+      class="mb-3 d-flex justify-content-between"
+    >
+      <div
+        class="w-75 d-flex justify-content-between"
+      >
+        <label
+          class="d-inline-flex"
+          for="newTodo-priority"
+        >
+          Priority:  
+        </label>
+        <select
+          class="form-control form-control-sm d-inline-flex"
+          id="newTodo-priority"
+          name="priority"
+        >
+          <option
+            value="1"
+          >
+            Ultra-Über
+          </option>
+          <option
+            value="2"
+          >
+            Über
+          </option>
+          <option
+            value="3"
+          >
+            Meh
+          </option>
+        </select>
+      </div>
+      <button
+        class="btn-primary rig btn btn-sm NewTodoForm-addBtn"
+        id="submit-btn"
+      >
+        Gø!
+      </button>
+    </div>
+  </form>
+</div>
+`;

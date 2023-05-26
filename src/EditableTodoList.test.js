@@ -2,8 +2,6 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import EditableTodoList from "./EditableTodoList.js";
 import { initialTodos } from "./_testCommon.js";
-const update = jest.fn();
-const remove = jest.fn();
 
 describe("EditableTodoList Component smoke and snapshot", function () {
   test("smoke test - renders without crashing", function () {

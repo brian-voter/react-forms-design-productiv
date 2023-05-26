@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inspo Quote Component snapshot test 1`] = `
+<div>
+  <div>
+    <button
+      id="quote-btn"
+    >
+      Click here for an inspirational quøte!
+    </button>
+  </div>
+</div>
+`;
