@@ -38,7 +38,7 @@ const DEFAULT_TODOS = [
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp({ localStorageKey, initialTodos = [] }) {
+function TodoApp({ localStorageKey }) {
   const [todos, setTodos] = useState(loadTodos);
 
   function loadTodos() {
@@ -48,6 +48,8 @@ function TodoApp({ localStorageKey, initialTodos = [] }) {
   }
 
   /**
+   * Updates state of todos and saves the list to localStorage using a
+   * callback function accepting the current/old todo list.
    *
    * @param {*} updateFun function taking oldState as argument and returns
    * the new state to be saved
@@ -63,34 +65,18 @@ function TodoApp({ localStorageKey, initialTodos = [] }) {
 
   /** add a new todo to list */
   function create(newTodo) {
-    setTodos(oldTodos => {
-      const newTodos = [...oldTodos, { ...newTodo, id: uuid() }];
-
-      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
-      return newTodos;
-    });
+    setTodosAndSave(oldTodos => [...oldTodos, { ...newTodo, id: uuid() }]);
   }
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
-    setTodos(oldTodos => {
-      const newTodos = oldTodos.map(todo =>
-        todo.id === updatedTodo.id ? updatedTodo : todo);
-
-      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
-      return newTodos;
-    });
-
+    setTodosAndSave(oldTodos => oldTodos.map(todo =>
+      todo.id === updatedTodo.id ? updatedTodo : todo));
   }
 
   /** delete a todo by id */
   function remove(id) {
-    setTodos(oldTodos => {
-      const newTodos = oldTodos.filter(todo => todo.id !== id);
-      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
-      return newTodos;
-    });
-
+    setTodosAndSave(oldTodos => oldTodos.filter(todo => todo.id !== id));
   }
 
   return (
