@@ -51,4 +51,26 @@ describe("EditableTodoList buttons trigger parent handler functions correctly", 
       expect(remove.mock.lastCall[0]).toBe(id);
     }
   });
+
+  test("EditableTodoList calls update correctly", function () {
+    const remove = jest.fn();
+
+    const { container, queryByText } = render(
+      <EditableTodoList
+        todos={initialTodos}
+        remove={remove}
+      />);
+
+    const deleteBtns = container.querySelectorAll("#delete-btn");
+
+    expect(deleteBtns.length).toEqual(initialTodos.length);
+
+    for (let i = 0; i < deleteBtns.length; i++) {
+      const { id } = initialTodos[i];
+      fireEvent.click(deleteBtns[i]);
+
+      // ensure remove was called with the id of this todo
+      expect(remove.mock.lastCall[0]).toBe(id);
+    }
+  });
 });

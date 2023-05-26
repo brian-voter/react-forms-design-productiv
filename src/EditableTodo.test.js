@@ -27,14 +27,10 @@ describe("EditableTodo Component functions", function () {
   });
 
   test("Check that update arguments are the form values", function () {
-    let newTitle = "";
-
-    const update = (todo) => {
-      newTitle = todo.title;
-    };
+    const updateMock = jest.fn();
 
     const { container, queryByText } = render(
-      <EditableTodo todo={initialTodos[0]} update={update} remove={remove} />
+      <EditableTodo todo={initialTodos[0]} update={updateMock} remove={remove} />
     );
 
     expect(queryByText("new title")).not.toBeInTheDocument();
@@ -53,7 +49,9 @@ describe("EditableTodo Component functions", function () {
 
     fireEvent.click(container.querySelector("#submit-btn"));
 
-    expect(newTitle).toEqual(editTodo.title);
+    console.log(updateMock.mock);
+    //FIXME: match args correctly
+    expect(updateMock.mock.lastCall[0]).toEqual(editTodo.title);
 
   });
 
