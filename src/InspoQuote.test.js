@@ -32,4 +32,27 @@ describe("able to display quotes", function () {
       expect(queryByText('Nü quøte')).toBeInTheDocument();
     });
   });
+
+  test("different quote pops up after second click", async function () {
+    const { container, queryByText } = render(<InspoQuote />);
+    expect(queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
+
+    //first button click
+    const quoteBtn = container.querySelector("#quote-btn");
+    fireEvent.click(quoteBtn);
+
+    let firstQuote, secondQuote;
+    await waitFor(() => {
+      expect(queryByText('Nü quøte')).toBeInTheDocument();
+      firstQuote = container.querySelector("#quote-text").textContent;
+    });
+
+    //second button click
+    fireEvent.click(quoteBtn);
+
+    await waitFor(() => {
+      secondQuote = container.querySelector("#quote-text").textContent;
+      expect(firstQuote).not.toEqual(secondQuote);
+    });
+  });
 });

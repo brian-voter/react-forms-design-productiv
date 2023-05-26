@@ -5,6 +5,7 @@ import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
 
+const LOCAL_TODOS = 'todos';
 /** App for managing a todo list.
  *
  * Props:
@@ -21,20 +22,34 @@ function TodoApp({ initialTodos = [] }) {
 
   /** add a new todo to list */
   function create(newTodo) {
-    setTodos(oldTodos => ([...oldTodos, { ...newTodo, id: uuid() }]));
+    setTodos(oldTodos => {
+      const newTodos = [...oldTodos, { ...newTodo, id: uuid() }];
+
+      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      return newTodos;
+    });
   }
 
   /** update a todo with updatedTodo */
   function update(updatedTodo) {
-    setTodos(oldTodos =>
-      oldTodos.map(todo =>
-        todo.id === updatedTodo.id ? updatedTodo : todo
-      ));
+    setTodos(oldTodos => {
+      const newTodos = oldTodos.map(todo =>
+        todo.id === updatedTodo.id ? updatedTodo : todo);
+
+      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      return newTodos;
+    });
+
   }
 
   /** delete a todo by id */
   function remove(id) {
-    setTodos(oldTodos => oldTodos.filter(todo => todo.id !== id));
+    setTodos(oldTodos => {
+      const newTodos = oldTodos.filter(todo => todo.id !== id);
+      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      return newTodos;
+    });
+
   }
 
   return (

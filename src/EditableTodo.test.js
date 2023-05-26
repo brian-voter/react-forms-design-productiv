@@ -50,10 +50,7 @@ describe("EditableTodo Component functions", function () {
 
     fireEvent.click(container.querySelector("#submit-btn"));
 
-    console.log(updateMock.mock);
-    //FIXME: match args correctly
     expect(updateMock.mock.lastCall[0]).toEqual(editTodo);
-
   });
 
   test("Check that initial form fields contain existing todo values", function () {

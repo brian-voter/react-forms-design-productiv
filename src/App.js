@@ -5,12 +5,18 @@ import Footer from "./Footer";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 
+const LOCAL_TODOS = 'todos'
 /** Site application.
  *
  * App -> TodoApp
  **/
 
 function App() {
+
+  function checkAndGetLocalStorage(){
+    const initialTodos = localStorage.getItem();
+  }
+
   return (
       <main className="App">
         <header className="container-fluid pt-4 pb-1">

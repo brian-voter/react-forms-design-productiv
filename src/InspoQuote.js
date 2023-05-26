@@ -42,7 +42,7 @@ function InspoQuote() {
 
   return (
     <div>
-      {quote && <i>{quote.text} -{quote.author}</i>}
+      {quote && <i id="quote-text">{quote.text} -{quote.author}</i>}
       <button id="quote-btn" onClick={handleClick}>
         {quote ? "Nü quøte" : "Click here for an inspirational quøte!"}
       </button>
