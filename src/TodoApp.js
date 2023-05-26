@@ -5,10 +5,31 @@ import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
 
-const LOCAL_TODOS = 'todos';
+const DEFAULT_TODOS = [
+  {
+    id: 1,
+    title: "Code!",
+    description: "Write some code",
+    priority: 2,
+  },
+  {
+    id: 2,
+    title: "Make dinner",
+    description: "Cook something healthy",
+    priority: 1,
+  },
+  {
+    id: 3,
+    title: "Go to bed",
+    description: "In bed by 11:15",
+    priority: 3,
+  },
+];
+
 /** App for managing a todo list.
  *
  * Props:
+ * - localStorageKey: key to load the todo list from in localStorage
  * - initialTodos: possible array of [ todo, ... ]
  *
  * State:
@@ -17,15 +38,35 @@ const LOCAL_TODOS = 'todos';
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp({ initialTodos = [] }) {
-  const [todos, setTodos] = useState(initialTodos);
+function TodoApp({ localStorageKey, initialTodos = [] }) {
+  const [todos, setTodos] = useState(loadTodos);
+
+  function loadTodos() {
+    const localTodos = JSON.parse(window.localStorage.getItem(localStorageKey));
+
+    return localTodos ? localTodos : DEFAULT_TODOS;
+  }
+
+  /**
+   *
+   * @param {*} updateFun function taking oldState as argument and returns
+   * the new state to be saved
+   */
+  function setTodosAndSave(updateFun) {
+    setTodos(oldTodos => {
+      const newTodos = updateFun(oldTodos);
+
+      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
+      return newTodos;
+    });
+  }
 
   /** add a new todo to list */
   function create(newTodo) {
     setTodos(oldTodos => {
       const newTodos = [...oldTodos, { ...newTodo, id: uuid() }];
 
-      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
       return newTodos;
     });
   }
@@ -36,7 +77,7 @@ function TodoApp({ initialTodos = [] }) {
       const newTodos = oldTodos.map(todo =>
         todo.id === updatedTodo.id ? updatedTodo : todo);
 
-      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
       return newTodos;
     });
 
@@ -46,7 +87,7 @@ function TodoApp({ initialTodos = [] }) {
   function remove(id) {
     setTodos(oldTodos => {
       const newTodos = oldTodos.filter(todo => todo.id !== id);
-      window.localStorage.setItem(LOCAL_TODOS, JSON.stringify(newTodos));
+      window.localStorage.setItem(localStorageKey, JSON.stringify(newTodos));
       return newTodos;
     });
 

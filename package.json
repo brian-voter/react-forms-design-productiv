@@ -13,7 +13,6 @@
     "react-scripts": "*",
     "uuid": "*",
     "web-vitals": "*"
-
   },
   "scripts": {
     "start": "react-scripts start",
